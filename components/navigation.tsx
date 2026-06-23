@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, BarChart3, FileText, Tags, Smile, Brain, TrendingUp, Code } from 'lucide-react';
 import { useState } from 'react';
 
 export function Navigation() {
@@ -10,13 +10,13 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const pages = [
-    { href: '/', label: 'Overview', icon: '📊' },
-    { href: '/data-preparation', label: 'Data Preparation', icon: '📋' },
-    { href: '/nlp-classification', label: 'NLP Classification', icon: '🏷️' },
-    { href: '/sentiment-analysis', label: 'Sentiment Analysis', icon: '😊' },
-    { href: '/topic-modeling', label: 'Topic Modeling', icon: '🧠' },
-    { href: '/metrics', label: 'Metrics & Evaluation', icon: '📈' },
-    { href: '/code-examples', label: 'Code Examples', icon: '💻' },
+    { href: '/', label: 'Overview', icon: BarChart3 },
+    { href: '/data-preparation', label: 'Data Preparation', icon: FileText },
+    { href: '/nlp-classification', label: 'NLP Classification', icon: Tags },
+    { href: '/sentiment-analysis', label: 'Sentiment Analysis', icon: Smile },
+    { href: '/topic-modeling', label: 'Topic Modeling', icon: Brain },
+    { href: '/metrics', label: 'Metrics & Evaluation', icon: TrendingUp },
+    { href: '/code-examples', label: 'Code Examples', icon: Code },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -31,21 +31,24 @@ export function Navigation() {
         </div>
 
         <ul className="space-y-2">
-          {pages.map((page) => (
-            <li key={page.href}>
-              <Link
-                href={page.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                  isActive(page.href)
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-300 hover:bg-slate-800'
-                }`}
-              >
-                <span className="text-lg">{page.icon}</span>
-                <span className="text-sm font-medium">{page.label}</span>
-              </Link>
-            </li>
-          ))}
+          {pages.map((page) => {
+            const IconComponent = page.icon;
+            return (
+              <li key={page.href}>
+                <Link
+                  href={page.href}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                    isActive(page.href)
+                      ? 'bg-blue-600 text-white'
+                      : 'text-slate-300 hover:bg-slate-800'
+                  }`}
+                >
+                  <IconComponent size={18} />
+                  <span className="text-sm font-medium">{page.label}</span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mt-8 pt-6 border-t border-slate-700">
@@ -69,22 +72,25 @@ export function Navigation() {
       {isOpen && (
         <div className="md:hidden fixed top-16 left-0 right-0 bg-slate-800 text-white p-4 z-40 max-h-[calc(100vh-64px)] overflow-y-auto">
           <ul className="space-y-2">
-            {pages.map((page) => (
-              <li key={page.href}>
-                <Link
-                  href={page.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                    isActive(page.href)
-                      ? 'bg-blue-600 text-white'
-                      : 'text-slate-300 hover:bg-slate-700'
-                  }`}
-                >
-                  <span className="text-lg">{page.icon}</span>
-                  <span className="text-sm font-medium">{page.label}</span>
-                </Link>
-              </li>
-            ))}
+            {pages.map((page) => {
+              const IconComponent = page.icon;
+              return (
+                <li key={page.href}>
+                  <Link
+                    href={page.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                      isActive(page.href)
+                        ? 'bg-blue-600 text-white'
+                        : 'text-slate-300 hover:bg-slate-700'
+                    }`}
+                  >
+                    <IconComponent size={18} />
+                    <span className="text-sm font-medium">{page.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
