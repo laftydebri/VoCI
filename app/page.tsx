@@ -4,6 +4,8 @@ import React from 'react';
 import { ArrowRight, Database, Brain, TrendingUp, BarChart3, MessageSquare, Zap, CheckCircle } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { Navigation } from '@/components/navigation';
+import { InteractivePipeline } from '@/components/interactive-pipeline';
+import { PipelineMetrics } from '@/components/pipeline-metrics';
 
 export default function Page() {
   const trendData = [
@@ -27,17 +29,6 @@ export default function Page() {
     { name: 'Negative', value: 23, color: '#ef4444' }
   ];
 
-  const ProcessStep = ({ icon: Icon, title, description, number }: any) => (
-    <div className="flex flex-col items-center text-center">
-      <div className="mb-3 p-3 bg-blue-100 rounded-full">
-        <Icon className="w-6 h-6 text-blue-600" />
-      </div>
-      <div className="text-xs font-bold text-blue-600 mb-1">STEP {number}</div>
-      <h3 className="font-bold text-sm text-slate-900 mb-1">{title}</h3>
-      <p className="text-xs text-slate-600">{description}</p>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <Navigation />
@@ -59,68 +50,38 @@ export default function Page() {
         {/* Main Presentation Slide */}
         <div className="bg-white rounded-2xl shadow-2xl p-12 mb-12">
           
-          {/* Process Flow */}
+          {/* Pipeline Metrics */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-10 text-center">End-to-End Processing Pipeline</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <ProcessStep 
-                icon={Database}
-                title="Data Ingestion"
-                description="Collect feedback from surveys, reviews, social media, support tickets"
-                number="1"
-              />
-              <div className="hidden md:flex items-center justify-center">
-                <ArrowRight className="w-8 h-8 text-slate-300" />
-              </div>
-              <ProcessStep 
-                icon={Brain}
-                title="NLP Classification"
-                description="Auto-categorize by topic: Quality, Delivery, Service, Pricing, Tech Issues"
-                number="2"
-              />
-              <div className="hidden md:flex items-center justify-center">
-                <ArrowRight className="w-8 h-8 text-slate-300" />
-              </div>
-              <ProcessStep 
-                icon={MessageSquare}
-                title="Sentiment Analysis"
-                description="Assign sentiment scores and emotional intensity to each feedback"
-                number="3"
-              />
-              <div className="hidden md:flex items-center justify-center">
-                <ArrowRight className="w-8 h-8 text-slate-300" />
-              </div>
-              <ProcessStep 
-                icon={Zap}
-                title="Topic Modeling"
-                description="Discover emerging patterns using LDA, BERTopic, embeddings"
-                number="4"
-              />
-            </div>
+            <PipelineMetrics />
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
-                <div className="flex items-center mb-2">
-                  <TrendingUp className="w-5 h-5 text-blue-600 mr-2" />
-                  <h4 className="font-bold text-slate-900">Trend Detection</h4>
-                </div>
-                <p className="text-sm text-slate-700">Track emerging themes over time with quarterly analysis</p>
+          {/* Interactive Process Flow */}
+          <div className="mb-16">
+            <InteractivePipeline />
+          </div>
+
+          {/* Benefits Summary */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 pt-12 border-t-2 border-slate-200">
+            <div className="p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+              <div className="flex items-center mb-2">
+                <TrendingUp className="w-5 h-5 text-blue-600 mr-2" />
+                <h4 className="font-bold text-slate-900">Trend Detection</h4>
               </div>
-              <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
-                <div className="flex items-center mb-2">
-                  <BarChart3 className="w-5 h-5 text-green-600 mr-2" />
-                  <h4 className="font-bold text-slate-900">Performance Metrics</h4>
-                </div>
-                <p className="text-sm text-slate-700">Monitor accuracy, precision, recall, F1, coherence scores</p>
+              <p className="text-sm text-slate-700">Track emerging themes over time with quarterly analysis</p>
+            </div>
+            <div className="p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg border border-green-200">
+              <div className="flex items-center mb-2">
+                <BarChart3 className="w-5 h-5 text-green-600 mr-2" />
+                <h4 className="font-bold text-slate-900">Performance Metrics</h4>
               </div>
-              <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
-                <div className="flex items-center mb-2">
-                  <CheckCircle className="w-5 h-5 text-purple-600 mr-2" />
-                  <h4 className="font-bold text-slate-900">Action Intelligence</h4>
-                </div>
-                <p className="text-sm text-slate-700">Generate executive summaries and recommendations</p>
+              <p className="text-sm text-slate-700">Monitor accuracy, precision, recall, F1, coherence scores</p>
+            </div>
+            <div className="p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg border border-purple-200">
+              <div className="flex items-center mb-2">
+                <CheckCircle className="w-5 h-5 text-purple-600 mr-2" />
+                <h4 className="font-bold text-slate-900">Action Intelligence</h4>
               </div>
+              <p className="text-sm text-slate-700">Generate executive summaries and recommendations</p>
             </div>
           </div>
 
