@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BarChart3, FileText, Tags, Smile, Brain, TrendingUp, Code } from 'lucide-react';
+import { BarChart3, FileText, Tags, Smile, Brain, TrendingUp, Code, LineChart } from 'lucide-react';
 
 export function Navigation() {
   const pathname = usePathname();
 
   const pages = [
     { href: '/', label: 'Overview', icon: BarChart3 },
+    { href: '/trend-dashboard', label: 'Trends', icon: LineChart },
     { href: '/data-preparation', label: 'Data Prep', icon: FileText },
     { href: '/nlp-classification', label: 'NLP', icon: Tags },
     { href: '/sentiment-analysis', label: 'Sentiment', icon: Smile },
