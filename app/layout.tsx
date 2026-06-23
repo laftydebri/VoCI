@@ -10,8 +10,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'AI Feedback Intelligence - Complete Guide',
+  description: 'Comprehensive guide to building AI models for feedback analysis using NLP and Topic Modeling',
   generator: 'v0.app',
   icons: {
     icon: [

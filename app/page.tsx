@@ -3,6 +3,7 @@
 import React from 'react';
 import { ArrowRight, Database, Brain, TrendingUp, BarChart3, MessageSquare, Zap, CheckCircle } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { Navigation } from '@/components/navigation';
 
 export default function Page() {
   const trendData = [
@@ -38,8 +39,10 @@ export default function Page() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6 md:p-12">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <Navigation />
+      <div className="md:ml-64 p-6 md:p-12">
+      <div className="max-w-5xl">
         {/* Header */}
         <div className="mb-12 text-center">
           <div className="inline-block px-4 py-2 bg-blue-100 rounded-full mb-4">
@@ -316,6 +319,7 @@ export default function Page() {
             Processing thousands of feedback entries • Real-time trend detection • Enterprise-grade accuracy
           </p>
         </div>
+      </div>
       </div>
     </div>
   );
